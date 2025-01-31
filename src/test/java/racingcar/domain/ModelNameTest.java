@@ -10,7 +10,7 @@ class ModelNameTest {
     @Test
     void 모델_이름이_유효한_경우_정상_생성된다() {
         final var modelName = ModelName.from("Car");
-        assertThat(modelName.getName()).isEqualTo("Car");
+        assertThat(modelName.name()).isEqualTo("Car");
     }
 
     @Test

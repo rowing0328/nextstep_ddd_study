@@ -8,13 +8,13 @@ public class Car {
     private final ModelName modelName;
     private final Position position;
 
-    private Car(ModelName modelName, Position position) {
+    public Car(ModelName modelName, Position position) {
         this.modelName = modelName;
         this.position = position;
     }
 
-    public static Car of(final String name, final int position) {
-        return new Car(ModelName.from(name), Position.from(position));
+    public Car (final String name, final int position) {
+        this(ModelName.from(name), Position.from(position));
     }
 
     public Car move(final MoveStrategy moveStrategy, final int inputValue) {
@@ -22,11 +22,11 @@ public class Car {
     }
 
     public String getModelName() {
-        return this.modelName.getName();
+        return this.modelName.name();
     }
 
     public int getPosition() {
-        return this.position.getPosition();
+        return this.position.position();
     }
 
     @Override

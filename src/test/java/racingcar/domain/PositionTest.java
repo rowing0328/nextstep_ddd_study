@@ -10,7 +10,7 @@ class PositionTest {
     @Test
     void 초기_위치를_생성한다() {
         final var position = Position.from(0);
-        assertThat(position.getPosition()).isEqualTo(0);
+        assertThat(position.position()).isEqualTo(0);
     }
 
     @Test
@@ -25,7 +25,7 @@ class PositionTest {
         final var position = Position.from(0);
         final var newPosition = position.move(true);
 
-        assertThat(newPosition.getPosition()).isEqualTo(1);
+        assertThat(newPosition.position()).isEqualTo(1);
     }
 
     @Test
@@ -33,7 +33,7 @@ class PositionTest {
         final var position = Position.from(0);
         final var newPosition = position.move(false);
 
-        assertThat(newPosition.getPosition()).isEqualTo(0);
+        assertThat(newPosition.position()).isEqualTo(0);
     }
 
 }
