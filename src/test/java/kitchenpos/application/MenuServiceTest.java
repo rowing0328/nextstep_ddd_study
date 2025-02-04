@@ -31,6 +31,7 @@ class MenuServiceTest {
 
     @Autowired
     private ProductRepository productRepository;
+
     @Autowired
     private MenuRepository menuRepository;
 
