@@ -76,7 +76,8 @@ class ProductRestControllerTest {
         when(productService.findAll()).thenReturn(List.of(product));
 
         mockMvc.perform(get("/api/products")
-                        .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 .andDo(print())
                 .andExpect(status().isOk());
     }

@@ -24,9 +24,9 @@ import static kitchenpos.fixture.OrderTableFixture.DEFAULT_ORDER_TABLE_NAME;
 import static kitchenpos.fixture.OrderTableFixture.orderTable;
 import static kitchenpos.fixture.ProductFixture.product;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-
 
 @Transactional
 @SpringBootTest
@@ -253,9 +253,11 @@ class OrderServiceTest {
             final OrderTable response2 = orderTableRepository.findById(response1.getOrderTable().getId()).orElseThrow(NoSuchElementException::new);
 
             // then
-            assertThat(response1.getStatus()).isEqualTo(OrderStatus.COMPLETED);
-            assertThat(response2.getNumberOfGuests()).isZero();
-            assertThat(response2.isOccupied()).isFalse();
+            assertAll(
+                    () -> assertThat(response1.getStatus()).isEqualTo(OrderStatus.COMPLETED),
+                    () -> assertThat(response2.getNumberOfGuests()).isZero(),
+                    () -> assertThat(response2.isOccupied()).isFalse()
+            );
         }
     }
 

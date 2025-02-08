@@ -18,7 +18,7 @@ import static kitchenpos.fixture.MenuGroupFixture.menuGroup;
 import static kitchenpos.fixture.MenuProductFixture.*;
 import static kitchenpos.fixture.ProductFixture.product;
 import static org.assertj.core.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @Transactional
 @SpringBootTest
@@ -47,10 +47,12 @@ class MenuServiceTest {
             final Menu response = menuService.create(request);
 
             // then
-            assertThat(response.getName()).isEqualTo(request.getName());
-            assertThat(response.getPrice()).isEqualTo(request.getPrice());
-            assertThat(response.getMenuGroup().getId()).isEqualTo(request.getMenuGroupId());
-            assertThat(response.getMenuProducts()).hasSize(1);
+            assertAll(
+                    () -> assertThat(response.getName()).isEqualTo(request.getName()),
+                    () -> assertThat(response.getPrice()).isEqualTo(request.getPrice()),
+                    () -> assertThat(response.getMenuGroup().getId()).isEqualTo(request.getMenuGroupId()),
+                    () -> assertThat(response.getMenuProducts()).hasSize(1)
+            );
         }
 
         @Test

@@ -39,7 +39,8 @@ class MenuGroupRestControllerTest {
 
         mockMvc.perform(post("/api/menu-groups")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(MenuGroupFixture.menuGroup(UUID.fromString("cbc75fae-feb0-4bb1-8be2-cb8ce5d8fded"), "한마리메뉴"))))
+                        .content(objectMapper.writeValueAsString(MenuGroupFixture.menuGroup(UUID.fromString("cbc75fae-feb0-4bb1-8be2-cb8ce5d8fded"), "한마리메뉴")))
+                )
                 .andDo(print()).andExpect(status().isCreated());
     }
 
